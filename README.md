@@ -29,30 +29,30 @@ Staff accounts are redirected to `IT_Staff_Dashboard.php` after login. Due dates
 
 ## Files
 
-| File | What it does |
+| File | Purpose |
 | --- | --- |
-| `Start Website.command` | Double-click launcher. Starts MySQL if needed, starts the PHP site on port 8080, and opens the browser. |
-| `index.php` | Login page. Shows the email and password form and any login error. |
-| `login.php` | Checks the email and password, then sends students and faculty to the user dashboard and IT staff to the staff dashboard. |
-| `userdashboard.php` | Student and faculty page for creating a ticket and viewing tickets by New, In Progress, Resolved, and Canceled. |
-| `IT_Staff_Dashboard.php` | IT staff page for searching, sorting, assigning, commenting, resolving, and reopening tickets. |
-| `config.php` | Connects to the `users_staff_db` MySQL database and makes sure the ticket tables are ready. |
-| `users_staff.sql` | Creates the database tables for accounts and tickets, and inserts the test accounts. |
-| `migrations/001_add_ticket_user_id.sql` | One-time update for an older `tickets` table. Adds the column that records which user created each ticket. |
-| `includes/topbar.php` | Shared header with the UTA title, menu button, notifications, and logout. |
-| `includes/theme_toggle.php` | Shared light/dark mode switch shown on the login page and both dashboards. |
-| `css/userdashboard.css` | Shared layout and colors for the login page, user dashboard, and staff dashboard, including dark mode. |
-| `js/script.js` | Login page behavior: show or hide the password, and block submit when email or password is empty. |
-| `js/userdashboard.js` | Loads a user's tickets, comments, and cancel action on the user dashboard. |
-| `js/userdashboard-menu.js` | Opens the menu, loads notifications, and logs the user out. |
-| `js/usertheme.js` | Saves the light or dark choice in the browser and applies it on the next visit. |
-| `php/submit-ticket.php` | Saves a new ticket with its category, priority, and due date. |
-| `php/get-tickets.php` | Returns the signed-in user's tickets for the selected status. |
-| `php/get-ticket-counts.php` | Returns how many of the user's tickets are in each status. |
-| `php/add-comment.php` | Saves a comment from the ticket owner on a new or in-progress ticket. |
-| `php/cancel-ticket.php` | Cancels the user's active ticket and notifies the assigned staff member. |
-| `php/notifications.php` | Lists notifications for the signed-in user or staff member and marks them as read. |
-| `php/logout.php` | Ends the session and returns to the login page. |
-| `php/ticket_lib.php` | Shared ticket rules: due dates, status groups, comments, notifications, staff assignment, resolve, and reopen. |
-| `images/UTA_logomark.png` | UTA mark shown in the header. |
-| `images/hamburger-menu-icon.png` | Menu icon in the header. |
+| `Start Website.command` | Starts the database if needed and opens the site in the browser |
+| `index.php` | Login page for students, faculty, and IT staff |
+| `login.php` | Checks the email and password and opens the matching dashboard |
+| `userdashboard.php` | Page where students and faculty create, view, comment on, and cancel tickets |
+| `IT_Staff_Dashboard.php` | Page where IT staff search, sort, assign, comment on, resolve, and reopen tickets |
+| `config.php` | Connects to the ticket database and prepares the ticket tables |
+| `users_staff.sql` | Creates the account and ticket tables and inserts the test accounts |
+| `css/userdashboard.css` | Shared layout, colors, and light/dark mode for every page |
+| `includes/topbar.php` | Shared header with the home link, notification menu, and logout |
+| `includes/theme_toggle.php` | Shared light and dark mode switch |
+| `js/script.js` | Checks the login form and shows or hides the password |
+| `js/usertheme.js` | Switches between light and dark mode and remembers the choice |
+| `js/userdashboard-menu.js` | Opens the header menu, notifications, and logout |
+| `js/userdashboard.js` | Loads a user's tickets and handles comments and cancellation |
+| `php/submit-ticket.php` | Saves a new ticket and sets its due date from the priority |
+| `php/get-tickets.php` | Returns the signed-in user's tickets for one status |
+| `php/get-ticket-counts.php` | Counts the signed-in user's tickets in each status |
+| `php/cancel-ticket.php` | Cancels one of the signed-in user's open tickets |
+| `php/add-comment.php` | Saves a comment written by the ticket owner |
+| `php/notifications.php` | Shows ticket updates and marks them as read |
+| `php/logout.php` | Ends the session and returns to the login page |
+| `php/ticket_lib.php` | Shared rules for status, due dates, comments, assignments, and notifications |
+| `migrations/001_add_ticket_user_id.sql` | Adds the ticket owner column on an older tickets table |
+| `images/UTA_logomark.png` | UTA mark shown in the header |
+| `images/hamburger-menu-icon.png` | Icon for the header menu |
