@@ -1,3 +1,4 @@
+// Opens the header menu, notifications, and logout.
 function csrfToken() {
     const meta = document.querySelector('meta[name="csrf-token"]');
     return meta ? meta.content : '';
