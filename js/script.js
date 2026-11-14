@@ -1,3 +1,4 @@
+// Checks the login form and shows or hides the password.
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.querySelector("#login-form form");
     const emailInput = document.querySelector('input[name="email"]');
