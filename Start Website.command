@@ -1,5 +1,5 @@
 #!/bin/bash
-# Double-click this file to open the IT ticket site in your browser.
+# Starts the database if needed and opens the site in the browser.
 cd "$(dirname "$0")" || exit 1
 
 PORT=8080
