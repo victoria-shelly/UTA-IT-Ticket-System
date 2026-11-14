@@ -1,4 +1,5 @@
 <?php
+// Cancels one open ticket owned by the signed-in user and notifies the assignee.
 session_start();
 require_once __DIR__ . '/../config.php';
 
