@@ -1,4 +1,5 @@
 <?php
+// Saves a comment written by the ticket owner.
 session_start();
 require_once __DIR__ . '/../config.php';
 
