@@ -1,5 +1,12 @@
 # UTA-IT-Ticket-System
 
+## Open the site
+
+Double-click `Start Website.command`. It starts the database if needed, starts the
+site, and opens http://127.0.0.1:8080 in your browser. Leave that Terminal window
+open while you use the site. You do not need to open the XAMPP control panel.
+Tickets are still stored in the MySQL database installed with XAMPP.
+
 ## Database setup
 
 Create a MySQL/MariaDB database named `users_staff_db`, then import `users_staff.sql`.
@@ -11,11 +18,11 @@ with the logged-in user.
 The database connection settings are in `config.php`. Set them to match your local
 database server before running the PHP application.
 
-The user dashboard lists each user's tickets under New, In Progress, Resolved, and
-Canceled filters. Staff can view all tickets in the same status groups and sort by
-submission time or priority. Users can cancel their own active tickets from the
-ticket list.
+Students and faculty use the user dashboard to create tickets, view them by status
+(New, In Progress, Resolved, and Canceled), comment, and cancel an active ticket.
+IT staff use the same visual layout to search, sort by submission time or priority,
+assign or unassign tickets, comment, resolve with a note, and reopen a resolved ticket.
+Both dashboards share light and dark mode, notifications, and logout.
 
-Staff accounts are redirected to `IT_Staff_Dashboard.php` after login. The staff
-dashboard uses the same `users_staff_db` database as login and ticket submission,
-and allows staff to search tickets and update their status.
+Staff accounts are redirected to `IT_Staff_Dashboard.php` after login. Due dates are
+1 day for high priority, 4 days for medium, and 7 days for low.

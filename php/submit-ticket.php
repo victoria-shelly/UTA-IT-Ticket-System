@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../config.php';
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) || ($_SESSION['user_role'] ?? '') !== 'user') {
     header('Location: ../index.php');
     exit();
 }
@@ -12,25 +12,44 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-$userId      = (int) $_SESSION['user_id'];   // from the session, never from the form
-$title       = trim($_POST['title'] ?? '');
-$category    = trim($_POST['category'] ?? '');
-$description = trim($_POST['description'] ?? '');
-$priority    = trim($_POST['priority'] ?? '');
-$status      = 'open';                        // new tickets always start open
-$dueDate     = !empty($_POST['dueDate']) ? $_POST['dueDate'] : null;
-
-if ($title === '' || $description === '' || $priority === '') {
-    echo 'Please fill out all required fields.';
+if (!csrfValid('csrf_token', $_POST['csrf_token'] ?? null)) {
+    header('Location: ../userdashboard.php?error=session');
     exit();
 }
 
-$stmt = $conn->prepare(
-    'INSERT INTO tickets (user_id, title, category, description, priority, status, dueDate)
-     VALUES (?, ?, ?, ?, ?, ?, ?)'
-);
-$stmt->bind_param('issssss', $userId, $title, $category, $description, $priority, $status, $dueDate);
-$stmt->execute();
+$userId = (int) $_SESSION['user_id'];
+$title = trim((string) ($_POST['title'] ?? ''));
+$category = trim((string) ($_POST['category'] ?? ''));
+$description = trim((string) ($_POST['description'] ?? ''));
+$priority = trim((string) ($_POST['priority'] ?? ''));
 
-header('Location: ../userdashboard.php?status=success');
+if ($title === '' || $category === '' || $description === '' || $priority === '') {
+    header('Location: ../userdashboard.php?error=missing');
+    exit();
+}
+
+if (
+    strlen($title) > 255
+    || strlen($description) > 5000
+    || !in_array($category, TICKET_CATEGORIES, true)
+    || !in_array($priority, TICKET_PRIORITIES, true)
+) {
+    header('Location: ../userdashboard.php?error=invalid');
+    exit();
+}
+
+$status = 'new';
+$dueDays = match ($priority) {
+    'high' => 1,
+    'medium' => 4,
+    default => 7,
+};
+$statement = $conn->prepare(
+    'INSERT INTO tickets (user_id, title, category, description, priority, status, dueDate)
+     VALUES (?, ?, ?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL ? DAY))'
+);
+$statement->bind_param('isssssi', $userId, $title, $category, $description, $priority, $status, $dueDays);
+$statement->execute();
+
+header('Location: ../userdashboard.php?status=success&ticket_id=' . $conn->insert_id);
 exit();

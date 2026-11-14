@@ -38,7 +38,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $password === '') {
 }
 
 $statement = $conn->prepare(
-    'SELECT id, email, password, role
+    'SELECT id, name, email, password, role
      FROM users_staff
      WHERE email = ?
      LIMIT 1'
@@ -77,6 +77,7 @@ if ($user && $passwordIsValid) {
     unset($_SESSION['ticket_csrf_token']);
 
     $_SESSION['user_id'] = (int) $user['id'];
+    $_SESSION['user_name'] = $user['name'];
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['user_role'] = $user['role'];
 
