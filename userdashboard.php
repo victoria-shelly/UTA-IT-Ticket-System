@@ -1,4 +1,5 @@
 <?php
+// Page where students and faculty create, view, comment on, and cancel their tickets.
 session_start();
 
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'user') {
