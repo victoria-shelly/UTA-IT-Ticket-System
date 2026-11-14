@@ -1,4 +1,5 @@
 <?php
+// Shared rules for ticket status, due dates, comments, assignments, and notifications.
 
 const TICKET_PRIORITIES = ['low', 'medium', 'high'];
 const TICKET_CATEGORIES = ['hardware', 'software', 'network', 'account', 'other'];
