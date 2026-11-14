@@ -1,4 +1,5 @@
 <?php
+// Shared header with the home link, notification menu, and logout.
 $portalAudience = $portalAudience ?? '';
 $homeHref = $homeHref ?? 'userdashboard.php';
 ?>
