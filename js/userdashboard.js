@@ -1,3 +1,4 @@
+// Loads the signed-in user's tickets and handles comments and cancellation.
 function ticketForm() {
     const form = document.getElementById('ticketDropDown');
     if (form) {
