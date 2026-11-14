@@ -1,4 +1,5 @@
 <?php
+// Page where IT staff search, sort, assign, comment on, resolve, and reopen tickets.
 session_start();
 
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'staff') {
