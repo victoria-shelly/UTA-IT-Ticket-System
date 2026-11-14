@@ -1,4 +1,5 @@
 <?php
+// Login page for students, faculty, and IT staff.
 session_start();
 
 if (empty($_SESSION['csrf_token'])) {
