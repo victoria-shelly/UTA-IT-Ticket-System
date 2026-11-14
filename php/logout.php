@@ -1,4 +1,5 @@
 <?php
+// Ends the session and returns to the login page.
 session_start();
 $_SESSION = [];
 
