@@ -1,4 +1,5 @@
 <?php
+// Saves a new support ticket and sets its due date from the priority.
 session_start();
 require_once __DIR__ . '/../config.php';
 
