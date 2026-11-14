@@ -1,3 +1,4 @@
+<?php /* Shared light and dark mode switch. */ ?>
 <div class="theme-control">
     <button type="button" id="themeToggle" class="theme-switch" role="switch" aria-checked="false" aria-label="Toggle dark mode">
         <span class="theme-icon sun">☀️</span>
