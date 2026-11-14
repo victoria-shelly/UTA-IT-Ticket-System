@@ -1,4 +1,5 @@
 <?php
+// Returns the signed-in user's tickets for one status, including comments.
 session_start();
 require_once __DIR__ . '/../config.php';
 
