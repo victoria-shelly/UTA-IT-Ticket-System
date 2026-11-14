@@ -1,5 +1,6 @@
 
 <?php
+// Checks the email and password and opens the matching dashboard.
 session_start();
 require_once 'config.php';
 
