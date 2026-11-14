@@ -1,3 +1,4 @@
+-- Creates the account and ticket tables and inserts the test accounts.
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
