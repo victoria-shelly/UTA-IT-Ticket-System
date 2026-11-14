@@ -1,4 +1,5 @@
 <?php
+// Counts the signed-in user's tickets in each status.
 session_start();
 require_once __DIR__ . '/../config.php';
 
