@@ -1,4 +1,5 @@
 <?php
+// Shows ticket updates and marks them as read.
 session_start();
 require_once __DIR__ . '/../config.php';
 
