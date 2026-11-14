@@ -1,4 +1,5 @@
 <?php
+// Connects to the ticket database and prepares the ticket tables.
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
